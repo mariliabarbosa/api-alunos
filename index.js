@@ -1,14 +1,13 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import usersRoutes from './routes/users.js';
+import routes from './routes/index.js';
 
 const app = express();
-const PORTA = 3030;
+const PORT = 3030;
 
-app.use(bodyParser.json());
-app.use('/users', usersRoutes);
+app.use(express.json());
+app.use(routes);
 
-app.listen(PORTA, () => console.log(`Servidor rodando em http://localhost:${PORTA}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
 app.get('/', (req, res) => {
     res.send('Página inicial.');
